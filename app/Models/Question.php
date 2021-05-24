@@ -11,7 +11,14 @@ class Question extends Model
     public function user(){
         return $this->belongsTo(User::class);
     }
+    public function setTitleAttribute($value)
+    {
+        $this->attributes['title'] = $value;
+        
+        //$this->attributes['slug'] = Str::slug($value);
+        $this->attributes['slug'] = str_slug($value);
+    }
     /*$question = Question::find(1);
-    $question->user->email
-    use HasFactory;*/
+    $question->user->email*/
+    use HasFactory;
 }
